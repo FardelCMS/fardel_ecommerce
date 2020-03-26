@@ -21,7 +21,7 @@ from flask import request
 from fardel.core.rest import create_api, abort, Resource
 from fardel.core.utils import cache_get_key
 from .models import *
-from .. import mod
+from fardel_ecommerce import mod
 from fardel.ext import db, cache
 
 
@@ -54,7 +54,6 @@ class ProductCategoryApi(Resource):
 
     # @cache.cached(timeout=600)
     def get(self, category_name=None):
-        print('asdasd')
         if category_name:
             cat = ProductCategory.query.filter_by(name=category_name).first()
             page = request.args.get('page', default=1, type=int)

@@ -9,10 +9,10 @@ from fardel.core.panel.decorator import staff_required
 from fardel.core.media.models import File
 from fardel.core.rest import create_api, abort, Resource
 from .models import *
-from ..product.models import ProductVariant
-from ...auth_address.models import UserAddress
-from ..order.models import *
-from .. import mod
+from fardel_ecommerce.product.models import ProductVariant
+from fardel_auth_address.models import UserAddress
+from fardel_ecommerce.order.models import *
+from fardel_ecommerce import mod
 from fardel.ext import db, cache
 from zeep import Client
 from fardel.config import BaseConfig

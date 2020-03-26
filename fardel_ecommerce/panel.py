@@ -6,6 +6,7 @@ from flask_babel import gettext, pgettext
 from fardel.core.panel.sidebar import panel_sidebar, Section, Link, ChildLink
 
 PATH_TO_ECOMMERCE_APP = pathlib.Path(__file__).parent
+print(str(PATH_TO_ECOMMERCE_APP / "media/templates"))
 
 mod = Blueprint(
     'ecommerce_panel',
@@ -72,6 +73,6 @@ def add_blog_section():
     panel_sidebar.add_section(section)
 
 
-from .checkout import panel  # nopep8
-from .order import panel  # nopep8
 from .product import panel  # nopep8
+from .order import panel  # nopep8
+from .checkout import panel  # nopep8

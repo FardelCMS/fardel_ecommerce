@@ -9,7 +9,7 @@ from flask_login import login_required
 from fardel.core.panel.views.media import is_safe_path
 from fardel.core.media.models import File
 from fardel.ext import db
-from ..panel import mod
+from fardel_ecommerce.panel import mod
 from .models import *
 
 from fardel.core.panel.decorator import staff_required

@@ -8,7 +8,7 @@ from sqlalchemy.dialects.postgresql import JSONB, UUID
 from flask_sqlalchemy import BaseQuery
 from flask_jwt_extended import current_user
 
-from ..product.models import ProductVariant
+from fardel_ecommerce.product.models import ProductVariant
 from fardel.ext import db
 
 

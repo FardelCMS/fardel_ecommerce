@@ -5,7 +5,7 @@ from flask import (request, render_template, redirect, url_for,
 from flask_login import login_required
 
 from fardel.ext import db
-from ..panel import mod
+from fardel_ecommerce.panel import mod
 from .models import *
 
 from fardel.core.auth.models import User
