@@ -41,7 +41,7 @@ class ProductCategory(db.Model, SeoModel):
 
     parent_id = db.Column(db.Integer, db.ForeignKey('product_categories.id'))
     parent = db.relationship('ProductCategory', remote_side=[id])
-    children = db.relationship('ProductCategory')
+    children = db.relationship('ProductCategory', overlaps="parent")
 
     def get_name(self):
         if self.parent:
@@ -249,7 +249,7 @@ class ProductVariant(db.Model):
     quantity = db.Column(db.Integer, default=1)
     quantity_allocated = db.Column(db.Integer, default=0)
 
-    product = db.relationship("Product")
+    product = db.relationship("Product", overlaps="variants")
 
     def get_attr_choice_id(self, _id):
         if self.attributes.get(str(_id)):
@@ -327,7 +327,7 @@ class AttributeChoiceValue(db.Model):
     name = db.Column(db.String(100))
     attribute_id = db.Column(db.Integer, db.ForeignKey("product_products_attributes.id"))
 
-    attribute = db.relationship('ProductAttribute')
+    attribute = db.relationship('ProductAttribute', overlaps="choices)
     
     def dict(self):
         pass

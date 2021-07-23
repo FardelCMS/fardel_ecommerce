@@ -111,7 +111,7 @@ class OrderLine(db.Model):
     data = db.Column(JSONB(), default={})
 
     variant = db.relationship("ProductVariant")
-    order = db.relationship("Order")
+    order = db.relationship("Order", overlaps="lines")
 
     def dict(self):
         return {

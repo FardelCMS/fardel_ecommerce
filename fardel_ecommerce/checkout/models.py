@@ -164,7 +164,7 @@ class CartLine(db.Model):
     data = db.Column(JSONB(), default={})
 
     variant = db.relationship("ProductVariant")
-    cart = db.relationship('Cart')
+    cart = db.relationship('Cart', overlaps="lines")
 
     def set_quantity(self, count):
         if count == 0:
