@@ -2,14 +2,14 @@ from setuptools import setup, find_packages
 
 
 install_requires = [
-    "fardel==1.3.2",
+    "fardel==1.3.5",
     "fardel_auth_address==1.0.1",
     "zeep"
 ]
 
 setup(
     name='fardel_ecommerce',
-    version='1.0.2',
+    version='1.0.3',
     description='E-Commerce plugin for Fardel CMS',
     author='Sepehr Hamzehlouy',
     author_email='s.hamzelooy@gmail.com',

@@ -92,7 +92,12 @@ class ProductApi(Resource):
         page = request.args.get('page', default=1, type=int)
         per_page = request.args.get('per_page', default=20, type=int)
         order_by = request.args.get('order_by')
-        query = Product.query.availables().order(order_by)
+        featured = request.args.get('featured')
+        if featured:
+            query = Product.query.featured().availables()
+        else:
+            query = Product.query.availables().order(order_by)
+
         ps = query.paginate(page=page, per_page=per_page, error_out=False).items
         return {'products':[p.dict() for p in ps]}    
 

@@ -30,6 +30,9 @@ class ProductQueryset(BaseQuery):
         else:
             return self.order_by(Product.id.desc())
 
+    def featured(self):
+        return self.filter_by(is_featured=True)
+
 
 class ProductCategory(db.Model, SeoModel):
     __tablename__ = "product_categories"
