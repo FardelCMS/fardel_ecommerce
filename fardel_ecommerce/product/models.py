@@ -327,7 +327,7 @@ class AttributeChoiceValue(db.Model):
     name = db.Column(db.String(100))
     attribute_id = db.Column(db.Integer, db.ForeignKey("product_products_attributes.id"))
 
-    attribute = db.relationship('ProductAttribute', overlaps="choices)
+    attribute = db.relationship('ProductAttribute', overlaps="choices")
     
     def dict(self):
         pass
