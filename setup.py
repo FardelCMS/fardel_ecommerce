@@ -7,7 +7,7 @@ install_requires = [
 
 setup(
     name='fardel_ecommerce',
-    version='1.0.4',
+    version='1.0.5',
     description='E-Commerce plugin for Fardel CMS',
     author='Sepehr Hamzehlouy',
     author_email='s.hamzelooy@gmail.com',

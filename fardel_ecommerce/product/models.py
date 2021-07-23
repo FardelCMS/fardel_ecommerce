@@ -20,7 +20,7 @@ class ProductQueryset(BaseQuery):
     def availables(self):
         return self.filter_by(is_published=True
             ).outerjoin(ProductVariant
-            ).filter(ProductVariant.quantity>0)
+            ).filter(ProductVariant.quantity>0).group_by(Product.id)
     
     def order(self, _by):
         if _by == "cheap_first":
