@@ -4,6 +4,7 @@ from setuptools import setup, find_packages
 install_requires = [
     "fardel==1.3.0",
     "fardel_auth_address==1.0.0",
+    "zeep"
 ]
 
 setup(
