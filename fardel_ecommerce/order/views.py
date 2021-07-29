@@ -1,5 +1,5 @@
 from flask import request
-from flask_jwt_extended import current_user, jwt_required, jwt_optional
+from flask_jwt_extended import current_user, jwt_required
 
 from fardel.core.rest import create_api, abort, Resource
 from fardel_ecommerce import mod
@@ -22,7 +22,7 @@ class OrderApi(Resource):
     """	
     endpoints = ['/order/', '/order/<int:order_id>/']
 
-    @jwt_required
+    @jwt_required()
     def get(self, order_id=None):
         if order_id:
             order = Order.query.filter_by(user_id=current_user.id, id=order_id).first()

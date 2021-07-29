@@ -2,7 +2,7 @@ import os
 
 from sqlalchemy import func
 from flask import request, current_app
-from flask_jwt_extended import current_user, jwt_required, jwt_optional
+from flask_jwt_extended import current_user, jwt_required
 
 from fardel.core.panel.views.media import is_safe_path
 from fardel.core.panel.decorator import staff_required
@@ -43,7 +43,7 @@ class ShoppingCartApi(Resource):
     :URL: ``/api/ecommerce/checkout/cart/``
     """
     endpoints = ['/checkout/cart/']
-    @jwt_optional
+    @jwt_required(optional=True)
     def get(self):
         """ To get current_user/anonymous_user shopping cart. """
         cart_token = request.args.get('cart_token')
@@ -68,7 +68,7 @@ class ShoppingCartApi(Resource):
 
         return {"cart": None}
 
-    @jwt_optional
+    @jwt_required(optional=True)
     def put(self):
         """
         To add a product(ProductVariant) into a shopping cart, if shopping cart wasn't
@@ -125,7 +125,7 @@ class ShoppingCartApi(Resource):
         db.session.commit()
         return {'cart': cart.dict()}
 
-    @jwt_optional
+    @jwt_required(optional=True)
     def patch(self):
         """
         To update a product(ProductVariant) count in a shopping cart.
@@ -146,7 +146,7 @@ class ShoppingCartApi(Resource):
         cl.set_quantity(count)
         return {"cart": cl.cart.dict()}
 
-    @jwt_optional
+    @jwt_required(optional=True)
     def delete(self):
         """
         To clear/delete a shopping cart.
@@ -172,7 +172,7 @@ class PaymentApi(Resource):
     """
     endpoints = ['/checkout/payment/', '/checkout/payment/<int:payment_id>']
 
-    @jwt_required
+    @jwt_required()
     def get(self, payment_id=None):
 
         """ to get payemnt of a current_user """
@@ -188,7 +188,7 @@ class PaymentApi(Resource):
         payments = query.paginate(per_page=per_page, page=page, error_out=False).items
         return {"payments": [payment.dict() for payment in payments]}
 
-    @jwt_required
+    @jwt_required()
     def post(self, payment_id=None):
         """
         To add a shopping cart  into payment, if payment wasn't
